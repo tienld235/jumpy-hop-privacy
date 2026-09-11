@@ -28,8 +28,7 @@
     box-shadow:0 2px 18px rgba(20,60,90,.09);
   }
   h2{font-size:20px; margin:34px 0 10px; padding-top:20px; border-top:1px solid var(--line)}
-  .card > h2:first-of-type{border-top:0; padding-top:0; margin-top:6px}
-  h3{font-size:16px; margin:22px 0 6px}
+  .ban > h2:first-of-type{border-top:0; padding-top:0; margin-top:6px}
   p,li{color:#26414F}
   ul{padding-left:20px}
   li{margin:5px 0}
@@ -39,12 +38,23 @@
     padding:14px 16px; border-radius:0 10px 10px 0; margin:0 0 6px;
   }
   .updated{color:var(--muted); font-size:13px; margin:0 0 6px}
-  .lang{
-    display:inline-block; margin:26px 0 0; padding:7px 14px;
-    background:#EAF6FF; border-radius:999px; font-size:13px; font-weight:600; color:#2A5468;
-  }
   footer{text-align:center; color:var(--muted); font-size:13px; padding:26px 18px 40px}
-  code{background:#EEF5FA; padding:2px 6px; border-radius:5px; font-size:14px}
+
+  /*  Thanh chọn ngôn ngữ chỉ có tác dụng khi có JavaScript, nên mặc định ẩn
+      đi. Không có JS thì nó không hiện ra — và cả năm bản nội dung bên dưới
+      vẫn nằm nguyên trong trang, cuộn xuống là đọc được. Nội dung không bao
+      giờ biến mất vì một đoạn script không chạy.  */
+  .tabs{display:none; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 0 22px}
+  .js .tabs{display:flex}
+  .tab{
+    font:inherit; font-size:14px; font-weight:600; cursor:pointer;
+    padding:8px 14px; border-radius:999px; border:1px solid var(--line);
+    background:#fff; color:#2A5468;
+  }
+  .tab:hover{border-color:var(--sky1)}
+  .tab.on{background:#EAF6FF; border-color:var(--sky1); color:#12303F}
+  .ban + .ban{border-top:1px solid var(--line); margin-top:36px; padding-top:10px}
+  .js .ban + .ban{border-top:0; margin-top:0; padding-top:0}
 </style>
 </head>
 <body>
@@ -52,103 +62,349 @@
 <header>
   <div class="icon">🐤</div>
   <h1>Jumpy Hop</h1>
-  <p>Privacy Policy · Chính sách quyền riêng tư</p>
+  <p>Privacy Policy</p>
 </header>
 
 <main>
 <div class="card">
 
-  <p class="updated">Last updated: 8 September 2026</p>
+  <div class="tabs">
+    <button type="button" class="tab" data-ma="en">🇬🇧 English</button>
+    <button type="button" class="tab" data-ma="vi">🇻🇳 Tiếng Việt</button>
+    <button type="button" class="tab" data-ma="es">🇪🇸 Español</button>
+    <button type="button" class="tab" data-ma="pt">🇧🇷 Português</button>
+    <button type="button" class="tab" data-ma="id">🇮🇩 Bahasa Indonesia</button>
+  </div>
 
-  <p class="lead">
-    <strong>Short version:</strong> Jumpy Hop does not ask for your name, email,
-    phone number or any account. Your score, coins and unlocked characters stay
-    on your own device. We never see them. The only data leaving your phone is
-    what Google AdMob needs in order to show ads.
-  </p>
+  <!-- ============================ ENGLISH ============================ -->
+  <section class="ban" data-ma="en" lang="en">
+    <p class="updated">Last updated: 11 September 2026</p>
 
-  <h2>What the app stores</h2>
-  <p>Saved on your device only, never sent anywhere:</p>
-  <ul>
-    <li>Best score and number of games played</li>
-    <li>Coins earned</li>
-    <li>Characters and scenes you unlocked, and which one is selected</li>
-    <li>Sound on/off, and your chosen language</li>
-  </ul>
-  <p>Uninstalling the app deletes all of it. There is no server and no backup —
-  if you uninstall, the progress is gone for good.</p>
+    <p class="lead">
+      <strong>Short version:</strong> Jumpy Hop does not ask for your name, email,
+      phone number or any account. Your score, coins and unlocked characters stay
+      on your own device. We never see them. The only data leaving your phone is
+      what Google AdMob needs in order to show ads.
+    </p>
 
-  <h2>Advertising</h2>
-  <p>We use <strong>Google AdMob</strong> to show banner, interstitial and
-  rewarded ads. To do that, Google may collect and process:</p>
-  <ul>
-    <li>An advertising identifier (a resettable ID, not your name)</li>
-    <li>Approximate location derived from IP address</li>
-    <li>Device type, operating system version, and basic app usage signals</li>
-  </ul>
-  <p>We configure AdMob with a maximum ad content rating of <strong>G
-  (suitable for everyone)</strong>.</p>
-  <p>Google's own privacy policy explains what they do with this data:
-  <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
-  <p>You can reset or delete your advertising ID at any time under
-  <em>Settings → Google → Ads</em> on your device.</p>
+    <h2>What the app stores</h2>
+    <p>Saved on your device only, never sent anywhere:</p>
+    <ul>
+      <li>Best score and number of games played</li>
+      <li>Coins earned</li>
+      <li>Characters and scenes you unlocked, and which one is selected</li>
+      <li>Sound on/off, and your chosen language</li>
+    </ul>
+    <p>Uninstalling the app deletes all of it. There is no server and no backup —
+    if you uninstall, the progress is gone for good.</p>
 
-  <h2>Children</h2>
-  <p>The game is designed to be safe and pleasant for children, and all content
-  is rated G. We do not knowingly collect personal information from anyone,
-  including children. If you are a parent and have a question about this app,
-  please contact us at the address below.</p>
+    <h2>Advertising</h2>
+    <p>We use <strong>Google AdMob</strong> to show banner, interstitial and
+    rewarded ads. To do that, Google may collect and process:</p>
+    <ul>
+      <li>An advertising identifier (a resettable ID, not your name)</li>
+      <li>Approximate location derived from IP address</li>
+      <li>Device type, operating system version, and basic app usage signals</li>
+    </ul>
+    <p>We configure AdMob with a maximum ad content rating of <strong>G
+    (suitable for everyone)</strong>.</p>
+    <p>Google's own privacy policy explains what they do with this data:
+    <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
+    <p>You can reset or delete your advertising ID at any time under
+    <em>Settings → Google → Ads</em> on your device.</p>
 
-  <h2>Permissions</h2>
-  <p>The app requests only what is required to display ads and play sound. It
-  does not use the camera, microphone, contacts, files or precise location.</p>
+    <h2>Children</h2>
+    <p>The game is designed to be safe and pleasant for children, and all content
+    is rated G. We do not knowingly collect personal information from anyone,
+    including children. If you are a parent and have a question about this app,
+    please contact us at the address below.</p>
 
-  <h2>Changes</h2>
-  <p>If this policy changes, the new version will be posted at this same address
-  with an updated date at the top.</p>
+    <h2>Permissions</h2>
+    <p>The app requests only what is required to display ads and play sound. It
+    does not use the camera, microphone, contacts, files or precise location.</p>
 
-  <h2>Contact</h2>
-  <p>Questions about this policy:
-  <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+    <h2>Changes</h2>
+    <p>If this policy changes, the new version will be posted at this same address
+    with an updated date at the top.</p>
 
-  <span class="lang">🇻🇳 Bản tiếng Việt</span>
+    <h2>Contact</h2>
+    <p>Questions about this policy:
+    <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+  </section>
 
-  <h2>Tóm tắt</h2>
-  <p>Jumpy Hop không hỏi tên, email, số điện thoại hay bất kỳ tài khoản nào.
-  Điểm số, xu và các nhân vật bạn mở khoá đều nằm trong máy bạn. Chúng tôi
-  không nhìn thấy chúng. Thứ duy nhất rời khỏi điện thoại là dữ liệu mà
-  Google AdMob cần để hiển thị quảng cáo.</p>
+  <!-- ============================ TIẾNG VIỆT ============================ -->
+  <section class="ban" data-ma="vi" lang="vi">
+    <p class="updated">Cập nhật lần cuối: 11 tháng 9 năm 2026</p>
 
-  <h3>Ứng dụng lưu gì</h3>
-  <p>Chỉ lưu trong máy bạn, không gửi đi đâu: kỷ lục, số ván đã chơi, số xu,
-  các nhân vật và bối cảnh đã mở khoá, cài đặt âm thanh và ngôn ngữ.
-  Gỡ ứng dụng là mất hết, không có bản sao lưu nào.</p>
+    <p class="lead">
+      <strong>Nói ngắn gọn:</strong> Jumpy Hop không hỏi tên, email, số điện thoại
+      hay bất kỳ tài khoản nào. Điểm số, xu và các nhân vật bạn mở khoá đều nằm
+      trong máy bạn. Chúng tôi không nhìn thấy chúng. Thứ duy nhất rời khỏi điện
+      thoại là dữ liệu mà Google AdMob cần để hiển thị quảng cáo.
+    </p>
 
-  <h3>Quảng cáo</h3>
-  <p>Chúng tôi dùng <strong>Google AdMob</strong>. Google có thể thu thập mã
-  định danh quảng cáo (mã có thể đặt lại, không phải tên bạn), vị trí tương đối
-  suy ra từ địa chỉ IP, loại thiết bị và phiên bản hệ điều hành.
-  Chúng tôi đặt mức nội dung quảng cáo tối đa là <strong>G — phù hợp mọi lứa
-  tuổi</strong>. Bạn có thể đặt lại mã định danh quảng cáo bất cứ lúc nào trong
-  <em>Cài đặt → Google → Quảng cáo</em>.</p>
+    <h2>Ứng dụng lưu những gì</h2>
+    <p>Chỉ lưu trong máy bạn, không gửi đi đâu cả:</p>
+    <ul>
+      <li>Kỷ lục và số ván đã chơi</li>
+      <li>Số xu kiếm được</li>
+      <li>Nhân vật và bối cảnh đã mở khoá, và cái nào đang dùng</li>
+      <li>Bật/tắt âm thanh, và ngôn ngữ bạn chọn</li>
+    </ul>
+    <p>Gỡ ứng dụng là xoá sạch. Không có máy chủ nào, cũng không có bản sao lưu —
+    gỡ ra là mất tiến độ vĩnh viễn.</p>
 
-  <h3>Trẻ em</h3>
-  <p>Trò chơi được làm để trẻ em chơi an toàn, toàn bộ nội dung ở mức G.
-  Chúng tôi không cố ý thu thập thông tin cá nhân của bất kỳ ai, kể cả trẻ em.
-  Phụ huynh có thắc mắc xin liên hệ email bên dưới.</p>
+    <h2>Quảng cáo</h2>
+    <p>Chúng tôi dùng <strong>Google AdMob</strong> để hiển thị quảng cáo banner,
+    quảng cáo xen kẽ và quảng cáo có thưởng. Để làm việc đó, Google có thể thu
+    thập và xử lý:</p>
+    <ul>
+      <li>Mã định danh quảng cáo (mã có thể đặt lại, không phải tên bạn)</li>
+      <li>Vị trí tương đối suy ra từ địa chỉ IP</li>
+      <li>Loại thiết bị, phiên bản hệ điều hành và vài tín hiệu sử dụng cơ bản</li>
+    </ul>
+    <p>Chúng tôi đặt mức nội dung quảng cáo tối đa là <strong>G — phù hợp với mọi
+    lứa tuổi</strong>.</p>
+    <p>Chính sách riêng của Google giải thích họ làm gì với dữ liệu này:
+    <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
+    <p>Bạn có thể đặt lại hoặc xoá mã định danh quảng cáo bất cứ lúc nào trong
+    <em>Cài đặt → Google → Quảng cáo</em>.</p>
 
-  <h3>Quyền truy cập</h3>
-  <p>Ứng dụng chỉ xin những quyền cần để hiển thị quảng cáo và phát âm thanh.
-  Không dùng camera, micro, danh bạ, tệp tin hay vị trí chính xác.</p>
+    <h2>Trẻ em</h2>
+    <p>Trò chơi được làm để trẻ em chơi an toàn và dễ chịu, toàn bộ nội dung ở
+    mức G. Chúng tôi không cố ý thu thập thông tin cá nhân của bất kỳ ai, kể cả
+    trẻ em. Phụ huynh có thắc mắc xin liên hệ địa chỉ bên dưới.</p>
 
-  <h3>Liên hệ</h3>
-  <p>Mọi thắc mắc:
-  <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+    <h2>Quyền truy cập</h2>
+    <p>Ứng dụng chỉ xin đúng những quyền cần để hiển thị quảng cáo và phát âm
+    thanh. Không dùng camera, micro, danh bạ, tệp tin hay vị trí chính xác.</p>
+
+    <h2>Thay đổi</h2>
+    <p>Nếu chính sách này thay đổi, bản mới sẽ được đăng ngay tại địa chỉ này,
+    kèm ngày cập nhật ở đầu trang.</p>
+
+    <h2>Liên hệ</h2>
+    <p>Mọi thắc mắc về chính sách này:
+    <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ ESPAÑOL ============================ -->
+  <section class="ban" data-ma="es" lang="es">
+    <p class="updated">Última actualización: 11 de septiembre de 2026</p>
+
+    <p class="lead">
+      <strong>En resumen:</strong> Jumpy Hop no pide tu nombre, correo, teléfono
+      ni ninguna cuenta. Tu puntuación, tus monedas y los personajes que
+      desbloqueas se quedan en tu propio dispositivo. Nosotros nunca los vemos.
+      Lo único que sale de tu teléfono es lo que Google AdMob necesita para
+      mostrar anuncios.
+    </p>
+
+    <h2>Qué guarda la aplicación</h2>
+    <p>Se guarda solo en tu dispositivo y no se envía a ninguna parte:</p>
+    <ul>
+      <li>Tu récord y el número de partidas jugadas</li>
+      <li>Las monedas conseguidas</li>
+      <li>Los personajes y escenarios desbloqueados, y cuál tienes puesto</li>
+      <li>El sonido activado o desactivado, y el idioma que elegiste</li>
+    </ul>
+    <p>Al desinstalar la aplicación se borra todo. No hay servidor ni copia de
+    seguridad: si la desinstalas, el progreso se pierde definitivamente.</p>
+
+    <h2>Publicidad</h2>
+    <p>Usamos <strong>Google AdMob</strong> para mostrar anuncios de banner,
+    intersticiales y con recompensa. Para ello, Google puede recoger y tratar:</p>
+    <ul>
+      <li>Un identificador de publicidad (un ID que puedes restablecer, no tu nombre)</li>
+      <li>Una ubicación aproximada deducida de la dirección IP</li>
+      <li>El tipo de dispositivo, la versión del sistema operativo y señales básicas de uso</li>
+    </ul>
+    <p>Configuramos AdMob con una clasificación máxima de contenido
+    <strong>G (apto para todos los públicos)</strong>.</p>
+    <p>La política de privacidad de Google explica qué hacen con estos datos:
+    <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
+    <p>Puedes restablecer o borrar tu identificador de publicidad cuando quieras
+    en <em>Ajustes → Google → Anuncios</em>.</p>
+
+    <h2>Menores</h2>
+    <p>El juego está pensado para que los niños jueguen de forma segura y
+    agradable, y todo el contenido tiene clasificación G. No recogemos a
+    sabiendas información personal de nadie, tampoco de menores. Si eres madre o
+    padre y tienes alguna duda, escríbenos a la dirección de abajo.</p>
+
+    <h2>Permisos</h2>
+    <p>La aplicación solo pide lo necesario para mostrar anuncios y reproducir
+    sonido. No usa la cámara, el micrófono, los contactos, los archivos ni la
+    ubicación precisa.</p>
+
+    <h2>Cambios</h2>
+    <p>Si esta política cambia, la nueva versión se publicará en esta misma
+    dirección con la fecha actualizada arriba.</p>
+
+    <h2>Contacto</h2>
+    <p>Dudas sobre esta política:
+    <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+  </section>
+
+  <!-- ============================ PORTUGUÊS ============================ -->
+  <section class="ban" data-ma="pt" lang="pt">
+    <p class="updated">Última atualização: 11 de setembro de 2026</p>
+
+    <p class="lead">
+      <strong>Resumindo:</strong> o Jumpy Hop não pede seu nome, e-mail, telefone
+      nem nenhuma conta. Sua pontuação, suas moedas e os personagens que você
+      desbloqueia ficam no seu próprio aparelho. A gente nunca vê nada disso. A
+      única coisa que sai do seu celular é o que o Google AdMob precisa para
+      exibir anúncios.
+    </p>
+
+    <h2>O que o aplicativo guarda</h2>
+    <p>Fica salvo apenas no seu aparelho e não é enviado para lugar nenhum:</p>
+    <ul>
+      <li>Seu recorde e quantas partidas você jogou</li>
+      <li>As moedas conquistadas</li>
+      <li>Os personagens e cenários desbloqueados, e qual está em uso</li>
+      <li>Som ligado ou desligado, e o idioma escolhido</li>
+    </ul>
+    <p>Desinstalar o aplicativo apaga tudo. Não existe servidor nem backup — se
+    você desinstalar, o progresso se perde de vez.</p>
+
+    <h2>Publicidade</h2>
+    <p>Usamos o <strong>Google AdMob</strong> para exibir anúncios em banner,
+    intersticiais e com recompensa. Para isso, o Google pode coletar e
+    processar:</p>
+    <ul>
+      <li>Um identificador de publicidade (um ID que pode ser redefinido, não o seu nome)</li>
+      <li>Localização aproximada deduzida do endereço IP</li>
+      <li>Tipo de aparelho, versão do sistema operacional e sinais básicos de uso</li>
+    </ul>
+    <p>Configuramos o AdMob com classificação máxima de conteúdo
+    <strong>G (adequado para todos)</strong>.</p>
+    <p>A política de privacidade do próprio Google explica o que eles fazem com
+    esses dados:
+    <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
+    <p>Você pode redefinir ou apagar seu identificador de publicidade quando
+    quiser em <em>Configurações → Google → Anúncios</em>.</p>
+
+    <h2>Crianças</h2>
+    <p>O jogo foi feito para crianças jogarem com segurança e tranquilidade, e
+    todo o conteúdo tem classificação G. Não coletamos intencionalmente
+    informações pessoais de ninguém, inclusive de crianças. Se você é pai ou mãe
+    e tem alguma dúvida, escreva para o endereço abaixo.</p>
+
+    <h2>Permissões</h2>
+    <p>O aplicativo pede apenas o necessário para exibir anúncios e tocar som.
+    Não usa câmera, microfone, contatos, arquivos nem localização precisa.</p>
+
+    <h2>Alterações</h2>
+    <p>Se esta política mudar, a nova versão será publicada neste mesmo endereço,
+    com a data atualizada no topo.</p>
+
+    <h2>Contato</h2>
+    <p>Dúvidas sobre esta política:
+    <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+  </section>
+
+  <!-- ======================= BAHASA INDONESIA ======================= -->
+  <section class="ban" data-ma="id" lang="id">
+    <p class="updated">Terakhir diperbarui: 11 September 2026</p>
+
+    <p class="lead">
+      <strong>Singkatnya:</strong> Jumpy Hop tidak meminta nama, email, nomor
+      telepon, atau akun apa pun. Skor, koin, dan karakter yang kamu buka
+      tersimpan di HP kamu sendiri. Kami tidak pernah melihatnya. Satu-satunya
+      data yang keluar dari HP kamu adalah yang dibutuhkan Google AdMob untuk
+      menampilkan iklan.
+    </p>
+
+    <h2>Apa yang disimpan aplikasi</h2>
+    <p>Hanya tersimpan di HP kamu dan tidak dikirim ke mana pun:</p>
+    <ul>
+      <li>Rekor dan jumlah permainan yang sudah dimainkan</li>
+      <li>Koin yang terkumpul</li>
+      <li>Karakter dan latar yang sudah dibuka, dan mana yang sedang dipakai</li>
+      <li>Suara hidup/mati, dan bahasa yang kamu pilih</li>
+    </ul>
+    <p>Menghapus aplikasi akan menghapus semuanya. Tidak ada server dan tidak ada
+    cadangan — kalau dihapus, progresnya hilang selamanya.</p>
+
+    <h2>Iklan</h2>
+    <p>Kami memakai <strong>Google AdMob</strong> untuk menampilkan iklan banner,
+    iklan sisipan, dan iklan berhadiah. Untuk itu, Google dapat mengumpulkan dan
+    memproses:</p>
+    <ul>
+      <li>Identitas iklan (ID yang bisa diatur ulang, bukan nama kamu)</li>
+      <li>Perkiraan lokasi dari alamat IP</li>
+      <li>Jenis perangkat, versi sistem operasi, dan sinyal pemakaian dasar</li>
+    </ul>
+    <p>Kami menyetel AdMob dengan batas rating konten iklan <strong>G (cocok
+    untuk semua umur)</strong>.</p>
+    <p>Kebijakan privasi Google sendiri menjelaskan apa yang mereka lakukan
+    dengan data ini:
+    <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></p>
+    <p>Kamu bisa mengatur ulang atau menghapus identitas iklan kapan saja di
+    <em>Setelan → Google → Iklan</em>.</p>
+
+    <h2>Anak-anak</h2>
+    <p>Game ini dibuat supaya aman dan nyaman dimainkan anak-anak, dan seluruh
+    isinya berperingkat G. Kami tidak dengan sengaja mengumpulkan data pribadi
+    siapa pun, termasuk anak-anak. Kalau kamu orang tua dan punya pertanyaan,
+    hubungi alamat di bawah ini.</p>
+
+    <h2>Izin</h2>
+    <p>Aplikasi hanya meminta izin yang diperlukan untuk menampilkan iklan dan
+    memutar suara. Tidak memakai kamera, mikrofon, kontak, berkas, atau lokasi
+    persis.</p>
+
+    <h2>Perubahan</h2>
+    <p>Kalau kebijakan ini berubah, versi barunya akan dipasang di alamat yang
+    sama, dengan tanggal yang diperbarui di bagian atas.</p>
+
+    <h2>Kontak</h2>
+    <p>Pertanyaan soal kebijakan ini:
+    <a href="mailto:hatisoftcor@gmail.com">hatisoftcor@gmail.com</a></p>
+  </section>
 
 </div>
 </main>
 
 <footer>Jumpy Hop · com.tien.jumpyhop</footer>
+
+<script>
+(function () {
+  var BAN = ['en', 'vi', 'es', 'pt', 'id'];
+
+  function hien(ma) {
+    document.querySelectorAll('.ban').forEach(function (p) {
+      p.hidden = p.getAttribute('data-ma') !== ma;
+    });
+    document.querySelectorAll('.tab').forEach(function (n) {
+      n.classList.toggle('on', n.getAttribute('data-ma') === ma);
+    });
+    document.documentElement.lang = ma;
+    try { history.replaceState(null, '', '#' + ma); } catch (e) {}
+  }
+
+  //  Bật thanh chọn TRƯỚC, ẩn nội dung SAU. Nếu đảo thứ tự mà đoạn dưới lỗi
+  //  thì trang sẽ trắng trơn: nội dung đã ẩn mà nút chuyển thì chưa hiện.
+  document.documentElement.className += ' js';
+
+  document.querySelectorAll('.tab').forEach(function (nut) {
+    nut.addEventListener('click', function () { hien(nut.getAttribute('data-ma')); });
+  });
+
+  //  Ưu tiên phần neo trên URL (#vi) để gửi thẳng link tới đúng bản; không có
+  //  thì lấy theo ngôn ngữ máy. 'in' là mã cũ của tiếng Indonesia, vài trình
+  //  duyệt còn trả về mã đó.
+  var chon = (location.hash || '').replace('#', '');
+  if (BAN.indexOf(chon) < 0) {
+    var may = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    if (may === 'in') may = 'id';
+    chon = BAN.indexOf(may) >= 0 ? may : 'en';
+  }
+  hien(chon);
+})();
+</script>
 
 </body>
 </html>
